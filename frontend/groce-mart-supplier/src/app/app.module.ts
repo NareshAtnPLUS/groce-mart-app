@@ -13,13 +13,16 @@ import { MaterialModule } from './theme/material.module';
 import { MainNavComponent } from './navigation/main-nav/main-nav.component';
 import { LayoutModule } from '@angular/cdk/layout';
 import { FooterComponent } from './navigation/footer/footer.component';
+import { HomeComponent } from './pages/home/home.component';
+import { UsersModule } from './users/users.module';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     MainNavComponent,
-    FooterComponent
+    FooterComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
