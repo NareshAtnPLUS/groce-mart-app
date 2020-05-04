@@ -1,0 +1,58 @@
+@import url('https://fonts.googleapis.com/css?family=Fredoka+One&display=swap');
+.footer-container{
+    background: linear-gradient(0deg, rgba(255,0,0,0.5) 0%, rgba(255,115,18,0.7) 26%, rgba(31,225,0,0.9) 100%);
+}
+#brand-footer{
+    background: none;
+    padding: 1rem;
+}
+#brand-name{
+    text-decoration: none;
+    color:#e60000;
+    
+    font-size: 2rem;
+}
+.footer-heading h1{
+    font-family: 'Fredoka One';
+}
+.footer-heading{
+    text-decoration: none;
+    color:#e60000;
+    font-size: 2rem;
+}
+#designer{
+    padding: 1rem;
+    background:rgba(255,0,0,0.7);
+    text-align: center;
+}
+.footer-list{
+    padding: 2rem;
+    align-items: flex-start;
+    align-self: flex-start;
+    margin-top: 2rem;
+}
+.footer-link{
+    text-decoration: none;
+    color: #000000;    
+}
+.mat-list-item{
+    height: 23px;
+}
+.flex-container{
+    display: flex;
+    flex-direction: column;
+    align-self: flex-start;
+    justify-content: flex-start;
+    margin-right: 12rem;
+    margin-top: 4rem;
+}
+.flex-container-connect{
+    display: flex;
+    flex-direction: column;
+    align-self: flex-start;
+    align-items: flex-start;
+    justify-content: flex-start;
+    margin-right: 6rem;
+    margin-top: 4rem;
+}
+

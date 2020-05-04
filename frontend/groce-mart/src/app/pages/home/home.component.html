@@ -1,0 +1,27 @@
+<div>
+    <img *ngIf="!(isHandset$ | async)" src="../../../assets/img/radish-and-carrots-1656663.jpg" id="banner-image" alt="" srcset="">
+    <img *ngIf="(isHandset$ | async)" src="../../../assets/img/radish-and-carrots-1656663.jpg" id="mobile-banner-image" alt="" srcset="">
+    <div class="home-container">
+        <mat-grid-list
+            cols="4"
+            rowHeight="15rem"
+            gutterSize="20px"
+        >
+            <mat-grid-tile
+            *ngFor="let tile of tiles"
+            [colspan]="(isHandset$ | async) ? '4' : tile.cols"
+            [rowspan]="tile.rows"
+            [style.border]="tile.border"
+            >
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium aliquam reiciendis beatae velit distinctio numquam vitae recusandae sequi aliquid, dicta optio doloribus nulla enim ipsum.</p>
+            <mat-grid-tile-header>
+                <h3>{{tile.text}}</h3>
+            </mat-grid-tile-header>
+            <mat-grid-tile-footer>
+                <h3>{{tile.text}}</h3>
+            </mat-grid-tile-footer>    
+            </mat-grid-tile>
+
+        </mat-grid-list>
+    </div>
+</div>
