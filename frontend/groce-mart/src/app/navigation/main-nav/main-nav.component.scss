@@ -5,7 +5,8 @@
 }
 
 .sidenav {
-  width: 260px;
+  width: 40vw;
+  background:linear-gradient(-45deg,rgb(29,3,130),rgb(203,110,163));  ;
 }
 
 .sidenav .mat-toolbar {
@@ -41,4 +42,6 @@
   background: rgb(255,0,0);
   background: linear-gradient(0deg, rgba(255,0,0,1) 0%, rgba(255,115,18,1) 26%, rgba(31,225,0,1) 100%);
 }
-
+.active{
+  background:linear-gradient(-45deg,rgb(29,3,130),rgb(203,110,163));  
+}

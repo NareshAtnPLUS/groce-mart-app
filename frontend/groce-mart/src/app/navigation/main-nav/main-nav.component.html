@@ -20,16 +20,16 @@
       </span>
       <span class="spacer"></span>
       <span *ngIf="!(isHandset$ | async)" class="navbar-left">
-        <button mat-button routerLink="/home">Home</button>
-        <button mat-button routerLink="/account">Account</button>
+        <button [routerLinkActive]="['active']" mat-button routerLink="/home">Home</button>
+        <button [routerLinkActive]="['active']" mat-button routerLink="/account">Account</button>
       </span>
       <span>
         
         <img *ngIf="!(isHandset$ | async)" class="brand-image" src="../../../assets/20200504_010800.png" width="100px" height="100px" alt="" srcset="">
       </span>
       <span *ngIf="!(isHandset$ | async)" class="navbar-right">
-        <button mat-button routerLink="/profile">Profile</button>
-        <button mat-button>Products</button>
+        <button [routerLinkActive]="['active']" mat-button routerLink="/profile">Profile</button>
+        <button [routerLinkActive]="['active']" mat-button>Products</button>
       </span>
       <span class="spacer"></span>
       <span *ngIf="(isHandset$ | async)" class="spacer"></span>
