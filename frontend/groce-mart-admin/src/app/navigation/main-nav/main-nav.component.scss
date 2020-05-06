@@ -1,0 +1,76 @@
+@import url('https://fonts.googleapis.com/css?family=Fredoka+One&display=swap');
+#groce-mart-nav{
+  background: rgb(255,0,0);
+  background: linear-gradient(0deg, rgba(255,0,0,0.8130602582830007) 0%, rgba(255,145,0,1) 60%);
+  backdrop-filter: blur(2px);
+  display: flex;
+  height: 3rem;
+  align-items: center;
+}
+.spacer{
+  flex:1 1 auto;
+}
+.brand-name{
+  text-decoration: none;
+  font-family: 'Fredoka One';
+  font-size: 1.5rem;
+  color:#111;
+  margin:0.75rem;
+}
+.nav-link{
+  flex: 0 1 70px;
+  padding:1rem 1rem;
+  color:black;
+  text-decoration: none;
+  text-align: center;
+  border-radius: 0.8rem;
+  transition: background .5s ease-in-out;
+  // transition: border-radius 2s ease-in-out;
+  transition-delay: 0.5s;
+}
+.nav-link:hover{
+  background: #1A237E;
+  border-radius: 10rem;
+}
+#main-nav-menu{
+  padding: 0.25rem;
+}
+.sidenav {
+  height: 100%; /* 100% Full-height */
+  width: 0; /* 0 width - change this with JavaScript */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Stay on top */
+  top: 0; /* Stay at the top */
+  right: 0;
+  background-color: #111; /* Black*/
+  overflow-x: hidden; /* Disable horizontal scroll */
+  padding-top: 60px; /* Place content 60px from the top */
+  transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+}
+
+/* The navigation menu links */
+.sidenav a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+/* When you mouse over the navigation links, change their color */
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+/* Position and style the close button (top right corner) */
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+
+

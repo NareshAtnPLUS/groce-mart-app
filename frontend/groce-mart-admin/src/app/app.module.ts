@@ -9,10 +9,18 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreRouterConnectingModule } from '@ngrx/router-store';
+import { MainNavComponent } from './navigation/main-nav/main-nav.component';
+import { FooterComponent } from './navigation/footer/footer.component';
+import { HomeComponent } from './pages/home/home.component';
+import { AccountComponent } from './pages/account/account.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    MainNavComponent,
+    FooterComponent,
+    HomeComponent,
+    AccountComponent
   ],
   imports: [
     BrowserModule,

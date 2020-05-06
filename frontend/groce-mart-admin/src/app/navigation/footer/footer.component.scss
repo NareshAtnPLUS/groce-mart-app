@@ -1,0 +1,29 @@
+.footer-container{
+  background: rgb(255,0,0);
+background: linear-gradient(0deg, rgba(255,0,0,0.8130602582830007) 0%, rgba(255,145,0,1) 60%);
+}
+.footer-grid{
+  --auto-grid-min-size: 20rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(var(--auto-grid-min-size), 1fr));
+  grid-gap: 1rem;
+}
+.footer-item{
+  padding: 1.5rem;
+
+}
+.flex-container{
+  display: flex;
+  flex-direction: column;
+}
+.flex-item{
+  text-decoration: none;
+  color:#111;
+  padding: 0.5rem;
+}
+#designer{
+  padding: 1rem;
+  color:rgba(255,145,0,1);
+  background: black;
+  text-align: center;
+}

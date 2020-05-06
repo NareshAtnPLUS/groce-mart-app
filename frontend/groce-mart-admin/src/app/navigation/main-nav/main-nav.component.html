@@ -1,0 +1,18 @@
+<nav id="groce-mart-nav">
+  <span *ngIf="(isHandset$ | async)" class="spacer"></span>
+  <span id="branding">
+    <a routerLink="/home" class="brand-name">Groce Mart Admin</a>
+  </span>
+  <span class="spacer"></span>
+
+  <a *ngIf="!(isHandset$ | async)" routerLink="/home" class="nav-link">Home</a>
+  <a *ngIf="!(isHandset$ | async)" routerLink="/account" class="nav-link">Account</a>
+  <div *ngIf="(isHandset$ | async)" id="main-nav-menu" (click)="openNav()" class="nav-link"><i class="material-icons">menu</i></div>
+</nav>
+<div id="mySidenav" class="sidenav">
+  <a href="javascript:void(0)" class="closebtn" (click)="closeNav()">&times;</a>
+  <a routerLink="/home" (click)="closeNav()">Home</a>
+  <a routerLink="/account" (click)="closeNav()">Account</a>
+  <a href="#" (click)="closeNav()">Clients</a>
+  <a href="#" (click)="closeNav()">Contact</a>
+</div>
