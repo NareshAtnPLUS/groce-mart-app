@@ -1,9 +1,13 @@
+@import '~@angular/material/theming';
+@import url('https://fonts.googleapis.com/css?family=Fredoka+One&display=swap');
 .sidenav-container {
   height: 100%;
 }
 
 .sidenav {
-  width: 200px;
+  width: 40vw;
+  // background: rgb(3,54,255);
+  background: linear-gradient(15deg, rgba(3,54,255,1) 0%, rgba(45,253,69,1) 100%);
 }
 
 .sidenav .mat-toolbar {
@@ -13,6 +17,7 @@
 .mat-toolbar.mat-primary {
   position: sticky;
   top: 0;
+  @include mat-elevation(15);
   z-index: 1;
 }
 .spacer{
@@ -20,4 +25,10 @@
 }
 #drop-down{
   background: crimson;
+}
+#brand-name{
+  text-decoration: none;
+  color:#0336FF;
+  font-family: 'Fredoka One';
+  font-size: 2rem;
 }
