@@ -25,5 +25,9 @@ export class FooterComponent implements OnInit {
       this.rowHeightDynamic = 20;
     }
   }
+  place:string = "My Place";
+  lat: number = -23.8779431;
+  lng: number = -49.8046873;
+  zoom: number = 15;
 
 }

@@ -5,7 +5,7 @@
 }
 
 .sidenav {
-  width: 40vw;
+  width: 50vw;
   background:linear-gradient(-45deg,rgb(29,3,130),rgb(203,110,163));  ;
 }
 
@@ -17,6 +17,7 @@
   position: sticky;
   top: 0;
   z-index: 1;
+  height: 5rem;
 }
 .spacer{
   flex:1 1 auto;
@@ -35,13 +36,29 @@
   @include mat-elevation(14);
   backdrop-filter: blur(2px);
   background: rgb(255,0,0);
+  z-index: 10;
   background: linear-gradient(0deg, rgba(255,0,0,0.5) 0%, rgba(255,115,18,0.7) 26%, rgba(31,225,0,0.9) 100%);
 }
 .mat-toolbar.mat-primary:hover {
-  
+
   background: rgb(255,0,0);
   background: linear-gradient(0deg, rgba(255,0,0,1) 0%, rgba(255,115,18,1) 26%, rgba(31,225,0,1) 100%);
 }
-.active{
-  background:linear-gradient(-45deg,rgb(29,3,130),rgb(203,110,163));  
+.active,
+.mat-nav-color{
+  background:linear-gradient(-45deg,rgb(29,3,130),rgb(203,110,163));
+}
+
+.search-bar{
+  width: 15em;
+
+}
+.mat-search-color{
+  background: rgba(255,0,0,1);
+  margin: 1rem;
+}
+
+#search-feild{
+  color: black;
+  margin-top: 0.2rem;
 }

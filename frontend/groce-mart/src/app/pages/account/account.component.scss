@@ -1,0 +1,85 @@
+#account-container{
+  width: 90%;
+  margin: auto;
+  margin-top: 3rem;
+}
+#account-tabs{
+  overflow: hidden;
+}
+.router-link{
+  font-style: italic;
+}
+.position-left{
+  display: flex;
+  justify-content: center;
+  align-self: start;
+  font-weight: 700;
+}
+.position-right{
+  display: flex;
+  justify-content: center;
+  font-weight: 700;
+}
+.container{
+  width: 80%;
+  margin: auto;
+  padding: 1rem;
+}
+.flex-button{
+  display: flex;
+  align-content: space-between;
+  justify-content: space-around;
+}
+.flex-button-content{
+  justify-content: end;
+}
+::ng-deep .mat-tab-labels{
+  opacity:1;
+}
+.account-header{
+  font-size: 2rem;
+}
+
+::ng-deep.mat-tab-header {
+  background: linear-gradient(-45deg,rgb(29,3,130),rgb(203,110,163));
+  border-bottom: 1px solid rgba(255, 255, 255, 1);
+
+}
+::ng-deep.mat-tab-label-content{
+  color: white;
+}
+::ng-deep.mat-tab-label{
+  opacity: 1;
+}
+.account-forms {
+  min-width: 10px;
+  max-width: 700px;
+  width: 100%;
+  align-items: center;
+  margin: auto;
+  padding: 0.75rem;
+  overflow: hidden;
+}
+
+
+
+.row{
+  display: flex;
+  flex-direction: row;
+}
+.account-full-width {
+  width: 100%;
+  margin-right: 1rem;
+}
+.account-half-width {
+  width: 50%;
+  margin-right: 0.3rem;
+}
+.mat-accent-color{
+  background:linear-gradient(-45deg,rgb(29,3,130),rgb(203,110,163));
+}
+.submit-button{
+  color:white;
+  width: 100%;
+}
+

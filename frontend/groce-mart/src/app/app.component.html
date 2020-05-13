@@ -2,6 +2,30 @@
   <main>
     <router-outlet></router-outlet>
   </main>
+  <br>
+  <section class="items-container">
+    <mat-grid-list
+            cols="4"
+            rowHeight="15rem"
+            gutterSize="20px"
+        >
+            <mat-grid-tile
+            *ngFor="let tile of tiles"
+            [colspan]="(isHandset$ | async) ? '4' : tile.cols"
+            [rowspan]="tile.rows"
+            [style.border]="tile.border"
+            >
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium aliquam reiciendis beatae velit distinctio numquam vitae recusandae sequi aliquid, dicta optio doloribus nulla enim ipsum.</p>
+            <mat-grid-tile-header>
+                <h3>{{tile.text}}</h3>
+            </mat-grid-tile-header>
+            <mat-grid-tile-footer>
+                <h3>{{tile.text}}</h3>
+            </mat-grid-tile-footer>
+            </mat-grid-tile>
+
+        </mat-grid-list>
+  </section>
   <footer id="footer">
     <app-footer></app-footer>
   </footer>

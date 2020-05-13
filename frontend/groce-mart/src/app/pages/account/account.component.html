@@ -1,1 +1,112 @@
-<p>account works!</p>
+<div id="account-container">
+  <mat-tab-group
+    id="account-tabs"
+    mat-stretch-tabs
+    class="mat-elevation-z8"
+    animationDuration="700ms"
+    >
+    <mat-tab label="Login">
+        <ng-template matTabContent>
+          <div class="container">
+            <form [formGroup]="loginForm" (ngSubmit)="onLoginSubmit()" class="account-forms">
+              <h1 class="account-header">Login</h1>
+              <div class="row">
+                <mat-form-field class="account-full-width">
+                  <mat-label>Email or phone</mat-label>
+                  <input matInput formControlName="username" placeholder="Email or Phone number" required>
+                </mat-form-field>
+              </div>
+              <div class="row">
+                <mat-form-field class="account-full-width">
+                  <mat-label>Password</mat-label>
+                  <input matInput formControlName="password" type="password" placeholder="Password" required>
+                </mat-form-field>
+              </div>
+              <button [disabled]="!loginForm.valid" class="submit-button" mat-raised-button color="accent-color" type="submit">Login&nbsp;&nbsp;<i class="material-icons">lock_open</i></button>
+            </form>
+            <div class="position-left"> Have you&nbsp; <a class="router-link" (click)="forgotPassword=!forgotPassword" (click)='moveToSelectedTab("Forgot Password")'>forgot your password</a>?</div>
+            <div class="position-right"> New User &nbsp; <a class="router-link" (click)='moveToSelectedTab("Register")'>Register Here</a>?</div>
+          </div>
+        </ng-template>
+    </mat-tab>
+    <mat-tab label="Register">
+      <ng-template matTabContent>
+        <div class="container">
+          <form (ngSubmit)="onRegisterSubmit()" [formGroup]="registerForm" class="account-forms">
+            <h1 class="account-header">Register</h1>
+            <div class="row">
+              <mat-form-field class="account-half-width col-xl-6">
+                <mat-label>First Name</mat-label>
+                <input matInput formControlName="firstName" placeholder="Naresh" required>
+                <mat-error *ngIf="registerForm.hasError('required')">
+                  Email is <strong>required</strong>
+                </mat-error>
+              </mat-form-field>
+              <mat-form-field class="account-half-width col-xl-6">
+                <mat-label>Last Name</mat-label>
+                <input matInput placeholder="Kumar" required formControlName="lastName">
+                <mat-error *ngIf="registerForm.hasError('required')">
+                  Email is <strong>required</strong>
+                </mat-error>
+              </mat-form-field>
+            </div>
+            <div class="row">
+              <mat-form-field class="account-full-width col-xl-6">
+                <mat-label>Email</mat-label>
+                <input type="email" formControlName="email" [errorStateMatcher]="matcher" matInput placeholder="naresh@nplus.io" required>
+                <mat-error *ngIf="registerForm.hasError('email') && !registerForm.hasError('required')">
+                  Please enter a valid email address
+                </mat-error>
+                <mat-error *ngIf="registerForm.hasError('required')">
+                  Email is <strong>required</strong>
+                </mat-error>
+              </mat-form-field>
+            </div>
+            <div class="row">
+              <mat-form-field class="account-full-width col-xl-6">
+                <mat-label>Mobile</mat-label>
+                <span matPrefix>+91 &nbsp;</span>
+                <input inputmode="numeric" pattern="[0-9]*"  formControlName="mobileNumber" maxlength="10" #mobileNumber type="text" matInput placeholder="9024 432 423" required>
+                <mat-hint align="end">{{mobileNumber.value.length}} / 10</mat-hint>
+              </mat-form-field>
+            </div>
+            <div class="row">
+              <mat-form-field class="account-full-width col-xl-6">
+                <mat-label>Password</mat-label>
+                <input formControlName="password" [errorStateMatcher]="matcher" matInput type="password" placeholder="Password here" required>
+              </mat-form-field>
+            </div>
+            <div class="row">
+              <mat-form-field class="account-full-width col-xl-6">
+                <mat-label>Confirm Password</mat-label>
+                <input formControlName="confirmPassword" [errorStateMatcher]="matcher" matInput type="password" placeholder="Password here" required>
+                <mat-error *ngIf="registerForm.hasError('notSame')">
+                  Passwords do not match
+              </mat-error>
+              </mat-form-field>
+            </div>
+            <button [disabled]="!registerForm.valid" class="submit-button" mat-raised-button color="accent-color" type="submit">Register</button>
+          </form>
+        </div>
+      </ng-template>
+    </mat-tab>
+    <mat-tab *ngIf="forgotPassword" label="Forgot Password">
+      <ng-template matTabContent>
+        <div class="container">
+          <form [formGroup]="forgotForm" (ngSubmit)="onForgotSubmit()" class="account-forms">
+            <h2>Forgot Your Password?</h2>
+            <p>we'll reset for you</p>
+            <div class="row">
+              <mat-form-field class="account-full-width">
+                <mat-label>Email</mat-label>
+                <input matInput placeholder="Email or Phone number" required>
+              </mat-form-field>
+            </div>
+            <button [disabled]="!forgotForm.valid" class="submit-button" mat-raised-button color="accent-color" type="submit">Reset Password</button>
+          </form>
+        </div>
+      </ng-template>
+  </mat-tab>
+  </mat-tab-group>
+
+</div>

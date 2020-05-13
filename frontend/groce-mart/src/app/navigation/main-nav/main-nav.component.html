@@ -15,7 +15,10 @@
   <mat-sidenav-content>
     <mat-toolbar color="primary">
       <span *ngIf="(isHandset$ | async)" class="spacer"></span>
-      <span>
+      <span *ngIf="(isHandset$ | async)">
+        <a *ngIf="!showSearch" id="brand-text" routerLink="/">  Groce Mart </a>
+      </span>
+      <span *ngIf="!(isHandset$ | async)">
         <a id="brand-text" routerLink="/">  Groce Mart </a>
       </span>
       <span class="spacer"></span>
@@ -29,10 +32,24 @@
       </span>
       <span *ngIf="!(isHandset$ | async)" class="navbar-right">
         <button [routerLinkActive]="['active']" mat-button routerLink="/profile">Profile</button>
-        <button [routerLinkActive]="['active']" mat-button>Products</button>
+        <button [routerLinkActive]="['active']" routerLink="/products" mat-button>Products</button>
       </span>
       <span class="spacer"></span>
       <span *ngIf="(isHandset$ | async)" class="spacer"></span>
+      <span *ngIf="showSearch">
+        <form (ngSubmit)="onSearchSubmit()">
+          <mat-form-field class="search-bar" *ngIf="showSearch" appearance="legacy">
+            <mat-label><mat-icon>search</mat-icon></mat-label>
+            <input #searchInput id="search-feild" name="search" [(ngModel)]="search" matInput placeholder="Search groceries">
+          </mat-form-field>
+          <button  color="search-color" mat-mini-fab>
+            <mat-icon matSuffix>search</mat-icon>
+          </button>
+        </form>
+      </span>
+      <button *ngIf="!showSearch" color="nav-color" (click)="showSearch=!showSearch" mat-mini-fab>
+        <mat-icon matSuffix>search</mat-icon>
+      </button>
       <button
         type="button"
         aria-label="Toggle sidenav"

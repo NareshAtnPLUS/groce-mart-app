@@ -11,16 +11,16 @@ import { EffectsModule } from '@ngrx/effects';
 import { StoreRouterConnectingModule } from '@ngrx/router-store';
 import { MainNavComponent } from './navigation/main-nav/main-nav.component';
 import { LayoutModule } from '@angular/cdk/layout';
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatButtonModule } from '@angular/material/button';
-import { MatSidenavModule } from '@angular/material/sidenav';
-import { MatIconModule } from '@angular/material/icon';
-import { MatListModule } from '@angular/material/list';
 import { HomeComponent } from './pages/home/home.component';
 import { AccountComponent } from './pages/account/account.component';
-import { ProfileComponent } from './pages/profile/profile.component';
 import { FooterComponent } from './navigation/footer/footer.component';
 import { MaterialModule } from './theme/material.module';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { AgmCoreModule } from '@agm/core';
+import { ProductsComponent } from './pages/products/products.component';
+import * as Hammer from 'hammerjs';
+import { HammerGestureConfig, HAMMER_GESTURE_CONFIG } from '@angular/platform-browser';
+import { HammertimeDirective } from './hammer.directive';
 
 @NgModule({
   declarations: [
@@ -28,13 +28,16 @@ import { MaterialModule } from './theme/material.module';
     MainNavComponent,
     HomeComponent,
     AccountComponent,
-    ProfileComponent,
     FooterComponent,
+    ProductsComponent,
+    HammertimeDirective
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    ReactiveFormsModule,
+    FormsModule,
     StoreModule.forRoot({}, {}),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
     EffectsModule.forRoot([]),
@@ -42,7 +45,8 @@ import { MaterialModule } from './theme/material.module';
     LayoutModule,
     MaterialModule
   ],
-  providers: [],
+  providers: [
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

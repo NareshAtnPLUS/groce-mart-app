@@ -8,7 +8,7 @@ export interface Tile {
   text: string;
   border: string;
  }
- 
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -26,7 +26,7 @@ export class HomeComponent implements OnInit {
     ngOnInit() {
       this.breakpoint = (window.innerWidth <= 400) ? 1 : 6;
   }
-  
+
   onResize(event) {
     this.breakpoint = (event.target.innerWidth <= 400) ? 1 : 6;
   }
@@ -36,5 +36,9 @@ export class HomeComponent implements OnInit {
     {text: 'Tile 3', cols: 1, rows: 1 ,border: '3px double skyblue'},
     {text: 'Tile 4', cols: 1, rows: 1 ,border: '3px double yellow'},
     ];
+  place:string = "My Place";
+  lat: number = -23.8779431;
+  lng: number = -49.8046873;
+  zoom: number = 15;
 
 }
