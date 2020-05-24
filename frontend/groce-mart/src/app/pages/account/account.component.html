@@ -34,21 +34,23 @@
         <div class="container">
           <form (ngSubmit)="onRegisterSubmit()" [formGroup]="registerForm" class="account-forms">
             <h1 class="account-header">Register</h1>
-            <div class="row">
-              <mat-form-field class="account-half-width col-xl-6">
-                <mat-label>First Name</mat-label>
-                <input matInput formControlName="firstName" placeholder="Naresh" required>
-                <mat-error *ngIf="registerForm.hasError('required')">
-                  Email is <strong>required</strong>
-                </mat-error>
-              </mat-form-field>
-              <mat-form-field class="account-half-width col-xl-6">
-                <mat-label>Last Name</mat-label>
-                <input matInput placeholder="Kumar" required formControlName="lastName">
-                <mat-error *ngIf="registerForm.hasError('required')">
-                  Email is <strong>required</strong>
-                </mat-error>
-              </mat-form-field>
+            <div formGroupName="fullName">
+              <div class="row">
+                <mat-form-field class="account-half-width col-xl-6">
+                  <mat-label>First Name</mat-label>
+                  <input matInput formControlName="firstName" placeholder="Naresh" required>
+                  <mat-error *ngIf="registerForm.hasError('required')">
+                    Email is <strong>required</strong>
+                  </mat-error>
+                </mat-form-field>
+                <mat-form-field class="account-half-width col-xl-6">
+                  <mat-label>Last Name</mat-label>
+                  <input matInput placeholder="Kumar" required formControlName="lastName">
+                  <mat-error *ngIf="registerForm.hasError('required')">
+                    Email is <strong>required</strong>
+                  </mat-error>
+                </mat-form-field>
+              </div>
             </div>
             <div class="row">
               <mat-form-field class="account-full-width col-xl-6">
@@ -68,6 +70,13 @@
                 <span matPrefix>+91 &nbsp;</span>
                 <input inputmode="numeric" pattern="[0-9]*"  formControlName="mobileNumber" maxlength="10" #mobileNumber type="text" matInput placeholder="9024 432 423" required>
                 <mat-hint align="end">{{mobileNumber.value.length}} / 10</mat-hint>
+              </mat-form-field>
+            </div>
+            <div class="row">
+              <mat-form-field class="account-full-width col-xl-6">
+                <mat-label>Username</mat-label>
+                <input formControlName="username" [errorStateMatcher]="matcher" matInput type="text" placeholder="username221" required>
+                <mat-hint align="end">Username is required</mat-hint>
               </mat-form-field>
             </div>
             <div class="row">
@@ -99,7 +108,7 @@
             <div class="row">
               <mat-form-field class="account-full-width">
                 <mat-label>Email</mat-label>
-                <input matInput placeholder="Email or Phone number" required>
+                <input formControlName="username" matInput placeholder="Email or Phone number" required>
               </mat-form-field>
             </div>
             <button [disabled]="!forgotForm.valid" class="submit-button" mat-raised-button color="accent-color" type="submit">Reset Password</button>
@@ -108,5 +117,5 @@
       </ng-template>
   </mat-tab>
   </mat-tab-group>
-
 </div>
+<app-test></app-test>

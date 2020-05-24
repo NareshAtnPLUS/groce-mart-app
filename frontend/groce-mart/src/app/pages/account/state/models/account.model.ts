@@ -8,10 +8,13 @@ export interface RegisterAccount {
 }
 export interface Account {
   id?:number;
-  firstName:string;
-  lastName:string;
+  fullName:{
+    firstName:string,
+    lastName:string
+  },
+  username:string,
   email:string;
-  mobileNumber:string;
+  mobileNumber?:string;
 }
 export interface RegisterResponse {
   firstName:string;

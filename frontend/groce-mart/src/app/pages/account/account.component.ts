@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { trigger,animate,keyframes,transition} from '@angular/animations'
-import * as kf from './keyframes'
 import { FormBuilder, Validators, FormControl, FormGroupDirective, NgForm, FormGroup } from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
+import * as accountActions from './state/actions/account.action'
+import { Store } from '@ngrx/store';
 export class MyErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
     const isSubmitted = form && form.submitted;
@@ -19,7 +20,8 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 export class AccountComponent implements OnInit {
   forgotPassword:boolean=false;
   constructor(
-    private fb:FormBuilder
+    private fb:FormBuilder,
+    private store:Store
   ) { }
   moveToSelectedTab(tabName: string) {
     for (let i =0; i< document.querySelectorAll('.mat-tab-label-content').length; i++) {
@@ -50,11 +52,14 @@ export class AccountComponent implements OnInit {
     password:['',Validators.minLength(6)]
   })
   forgotForm=this.fb.group({
-    username:['',Validators.required],
+    username:['',Validators.minLength(10)],
   })
   registerForm=this.fb.group({
-    firstName:['',Validators.minLength(3)],
-    lastName:['',Validators.minLength(3)],
+    fullName:this.fb.group({
+      firstName:['',Validators.minLength(3)],
+      lastName:['',Validators.minLength(3)],
+    }),
+    username:['',Validators.minLength(5)],
     email:['',[Validators.required,Validators.email]],
     mobileNumber:['',[Validators.required,Validators.minLength(10)]],
     password:['',Validators.minLength(6)],
@@ -67,14 +72,17 @@ export class AccountComponent implements OnInit {
 
   return pass === confirmPass ? null : { notSame: true }
   }
-  onRegisterSubmit(){
+  async onRegisterSubmit(){
     console.log(this.registerForm.value)
+    const user = this.registerForm.value
+    delete user.confirmPassword
+    await this.store.dispatch(new accountActions.CreateAccount(user))
   }
   onLoginSubmit(){
     console.log(this.loginForm.value)
   }
   onForgotSubmit(){
-
+    console.log(this.forgotForm.value)
   }
 
 }

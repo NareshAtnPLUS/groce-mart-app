@@ -21,6 +21,9 @@ import { ProductsComponent } from './pages/products/products.component';
 import * as Hammer from 'hammerjs';
 import { HammerGestureConfig, HAMMER_GESTURE_CONFIG } from '@angular/platform-browser';
 import { HammertimeDirective } from './hammer.directive';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AccountInterceptor } from './pages/account/interceptors/account.interceptor';
+import { TestComponent } from './pages/account/test/test.component';
 
 @NgModule({
   declarations: [
@@ -30,11 +33,13 @@ import { HammertimeDirective } from './hammer.directive';
     AccountComponent,
     FooterComponent,
     ProductsComponent,
+    TestComponent,
     HammertimeDirective
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
     FormsModule,
@@ -45,7 +50,12 @@ import { HammertimeDirective } from './hammer.directive';
     LayoutModule,
     MaterialModule
   ],
-  providers: [
+  providers:[
+    {
+      provide:HTTP_INTERCEPTORS,
+      useClass:AccountInterceptor,
+      multi:true
+    }
   ],
   bootstrap: [AppComponent]
 })

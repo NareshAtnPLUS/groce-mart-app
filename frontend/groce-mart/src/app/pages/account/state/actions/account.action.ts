@@ -6,9 +6,12 @@ import { Update } from '@ngrx/entity';
 
 
 export enum AccountActionTypes{
-  LOAD_ACCOUNT = "[ACCOUNT LOGIN] Load Account",
-  LOAD_ACCOUNT_SUCCESS = "[ACCOUNT LOGIN] Load Account Success",
-  LOAD_ACCOUNT_FAIL = "[ACCOUNT LOGIN] Load Account Fail",
+  // LOGIN_ACCOUNT = "[ACCOUNT LOGIN] Load Account",
+  // LOGIN_ACCOUNT_SUCCESS = "[ACCOUNT LOGIN] Load Account Success",
+  // LOGIN_ACCOUNT_FAIL = "[ACCOUNT LOGIN] Load Account Fail",
+  LOAD_ACCOUNTS = "[ACCOUNT LOAD] Load Account",
+  LOAD_ACCOUNTS_SUCCESS = "[ACCOUNT LOAD] Load Account Success",
+  LOAD_ACCOUNTS_FAIL = "[ACCOUNT LOAD] Load Account Fail",
   CREATE_ACCOUNT = "[ACCOUNT REGISTER] Create Account",
   CREATE_ACCOUNT_SUCCESS = "[ACCOUNT REGISTER] Create Account Success",
   CREATE_ACCOUNT_FAIL = "[ACCOUNT REGISTER] Create Account Fail",
@@ -52,16 +55,28 @@ export enum AccountActionTypes{
   CANCEL_ORDER_SUCCESS = "[ACCOUNT ORDER] Cancel Order Success",
   CANCEL_ORDER_FAIL = "[ACCOUNT ORDER] Cancel Order Fail"
 }
-export class LoadAccount implements Action {
-  readonly type = AccountActionTypes.LOAD_ACCOUNT
-  constructor(public payload:Login){}
+// export class LoginAccount implements Action {
+//   readonly type = AccountActionTypes.LOAD_ACCOUNT
+//   constructor(public payload:Login){}
+// }
+// export class LoginAccountSuccess implements Action {
+//   readonly type = AccountActionTypes.LOAD_ACCOUNT_SUCCESS
+//   constructor(public payload:Account){}
+// }
+// export class LoginAccountFail implements Action {
+//   readonly type = AccountActionTypes.LOAD_ACCOUNT_FAIL
+//   constructor(public payload:string){}
+// }
+export class LoadAccounts implements Action {
+  readonly type = AccountActionTypes.LOAD_ACCOUNTS
+  // constructor(public payload:string){}
 }
-export class LoadAccountSuccess implements Action {
-  readonly type = AccountActionTypes.LOAD_ACCOUNT_SUCCESS
-  constructor(public payload:Account){}
+export class LoadAccountsSuccess implements Action {
+  readonly type = AccountActionTypes.LOAD_ACCOUNTS_SUCCESS
+  constructor(public payload:Account[]){}
 }
-export class LoadAccountFail implements Action {
-  readonly type = AccountActionTypes.LOAD_ACCOUNT_FAIL
+export class LoadAccountsFail implements Action {
+  readonly type = AccountActionTypes.LOAD_ACCOUNTS_FAIL
   constructor(public payload:string){}
 }
 export class CreateAccount implements Action {
@@ -70,7 +85,7 @@ export class CreateAccount implements Action {
 }
 export class CreateAccountSuccess implements Action {
   readonly type = AccountActionTypes.CREATE_ACCOUNT_SUCCESS
-  constructor(public payload:RegisterResponse){}
+  constructor(public payload:Account){}
 }
 export class CreateAccountFail implements Action {
   readonly type = AccountActionTypes.CREATE_ACCOUNT_FAIL
@@ -231,9 +246,9 @@ export class DeleteOrderFail implements Action {
   readonly type = AccountActionTypes.DELETE_ORDER_FAIL
   constructor(public payload:string){}
 }
-export type Actions = LoadAccount
-                    |LoadAccountSuccess
-                    |LoadAccountFail
+export type Actions = LoadAccounts
+                    |LoadAccountsSuccess
+                    |LoadAccountsFail
                     |CreateAccount
                     |CreateAccountSuccess
                     |CreateAccountFail
