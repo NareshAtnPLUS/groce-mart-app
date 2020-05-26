@@ -9,7 +9,7 @@ user.post('/register',async (req,res)=>{
     await User.addUser(newUser,(err,user)=>{
         if(err){
             console.log(err)
-            res.sendStatus(500)
+            // res.sendStatus(500)
         } else {
             console.log('User Added Successfully')
         }
