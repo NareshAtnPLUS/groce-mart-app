@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { trigger,animate,keyframes,transition} from '@angular/animations'
 import { FormBuilder, Validators, FormControl, FormGroupDirective, NgForm, FormGroup } from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
-import * as accountActions from './state/actions/account.action'
-import { Store } from '@ngrx/store';
+import { Store, select } from '@ngrx/store';
+import * as accountActions from './store/actions/user.actions'
+import * as AccountSelectors from './store/selectors/user.selectors'
+import { AuthService } from './services/auth.service';
+import { tap } from 'rxjs/operators';
 export class MyErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
     const isSubmitted = form && form.submitted;
@@ -21,7 +23,8 @@ export class AccountComponent implements OnInit {
   forgotPassword:boolean=false;
   constructor(
     private fb:FormBuilder,
-    private store:Store
+    private store$:Store<any>,
+    private auth:AuthService
   ) { }
   moveToSelectedTab(tabName: string) {
     for (let i =0; i< document.querySelectorAll('.mat-tab-label-content').length; i++) {
@@ -31,6 +34,7 @@ export class AccountComponent implements OnInit {
       }
   }
   ngOnInit(): void {
+    this.auth.isLoggedIn()
   }
   tabBackground={
     value:'primary'
@@ -54,6 +58,13 @@ export class AccountComponent implements OnInit {
   forgotForm=this.fb.group({
     username:['',Validators.minLength(10)],
   })
+  otpForm = this.fb.group({
+    otp:['',Validators.required]
+  })
+  updatePasswordForm=this.fb.group({
+    password:['',Validators.minLength(6)],
+    confirmPassword: ['']
+  },{validator: this.checkPasswords })
   registerForm=this.fb.group({
     fullName:this.fb.group({
       firstName:['',Validators.minLength(3)],
@@ -72,17 +83,36 @@ export class AccountComponent implements OnInit {
 
   return pass === confirmPass ? null : { notSame: true }
   }
+
   async onRegisterSubmit(){
     console.log(this.registerForm.value)
     const user = this.registerForm.value
     delete user.confirmPassword
-    await this.store.dispatch(new accountActions.CreateAccount(user))
+    this.store$.dispatch(accountActions.registerUser(user))
+
   }
   onLoginSubmit(){
     console.log(this.loginForm.value)
+    this.store$.dispatch(accountActions.loginUser(this.loginForm.value))
   }
-  onForgotSubmit(){
-    console.log(this.forgotForm.value)
+  showOtpForm=false;
+  async onForgotSubmit(){
+    const  username = this.forgotForm.value
+    this.store$.dispatch(accountActions.forgotPasswordUser(username))
+    this.store$.pipe(
+      select(AccountSelectors.selectUserAvailable)
+    ).subscribe(userAvailable => this.showOtpForm = userAvailable)
+  } showUpdatePasswordForm
+  onOtpSubmit(){
+    this.store$.pipe(
+      select(AccountSelectors.selectIsOtpMatch)
+    ).subscribe(isOtpMatch=>this.showUpdatePasswordForm = isOtpMatch)
+    this.store$.dispatch(accountActions.submitOtp(this.otpForm.value))
+
   }
+  onUpdatePasswordSubmit(){
+    this.store$.dispatch(accountActions.updatePassword(this.updatePasswordForm.value))
+  }
+
 
 }

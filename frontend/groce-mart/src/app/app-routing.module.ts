@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './pages/home/home.component';
 import { AccountComponent } from './pages/account/account.component';
 import { ProductsComponent } from './pages/products/products.component';
+import { AuthGuardGuard } from './guard/auth-guard.guard';
 
 
 
@@ -10,7 +11,8 @@ const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   {path:'home',component:HomeComponent},
   {   path:'account',
-      loadChildren:() => import('./pages/account/account.module').then(m => m.AccountModule)
+      loadChildren:() => import('./pages/account/account.module').then(m => m.AccountModule),
+      // canActivateChild:[AuthGuardGuard]
   },
   {   path:'products',
       loadChildren:() => import('./pages/products/products.module').then(m => m.ProductsModule)

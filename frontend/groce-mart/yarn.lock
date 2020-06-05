@@ -2,13 +2,6 @@
 # yarn lockfile v1
 
 
-"@agm/core@^1.1.0":
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/@agm/core/-/core-1.1.0.tgz#6f8dcbac068f681fe4fa9b0a0cbf660588025911"
-  integrity sha512-cMvmm3+3/uuVFurLv1FKhE0/6ssIlDvYBjQFCi8ELg7h0OY2MkIU1MXWr7z+f/xZ08E936I4eeddni6k4yUTIA==
-  dependencies:
-    tslib "^1.9.0"
-
 "@angular-devkit/architect@0.901.3":
   version "0.901.3"
   resolved "https://registry.yarnpkg.com/@angular-devkit/architect/-/architect-0.901.3.tgz#7aa41d68ce3eadbc83a4f856e5d7f17ed6853977"
@@ -1006,6 +999,11 @@
   version "9.1.0"
   resolved "https://registry.yarnpkg.com/@ngrx/router-store/-/router-store-9.1.0.tgz#e8e72167813746c08b02cb6616c32fb8e0b87385"
   integrity sha512-zdIBUsfyrrA64mUqajHMARSwttOAOJ5FSyVJLHQfBlz9/vil6Kby1KhVLEG7mGmkz799YYlIM135QsrJhgf7wA==
+
+"@ngrx/schematics@^9.1.2":
+  version "9.1.2"
+  resolved "https://registry.yarnpkg.com/@ngrx/schematics/-/schematics-9.1.2.tgz#6b5de7f2294f0df353888ddd48f436bf25667fd2"
+  integrity sha512-oa2fSjoaYlTmBPJW45EQlaeTGIJZ5wKXQFDGUBlJQNtZf/El2CXmGyo0VWzxQ40y2GCdt4gCXeDHZWCchUFCLA==
 
 "@ngrx/store-devtools@^9.1.0":
   version "9.1.0"

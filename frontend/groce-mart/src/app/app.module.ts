@@ -16,14 +16,10 @@ import { AccountComponent } from './pages/account/account.component';
 import { FooterComponent } from './navigation/footer/footer.component';
 import { MaterialModule } from './theme/material.module';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { AgmCoreModule } from '@agm/core';
 import { ProductsComponent } from './pages/products/products.component';
-import * as Hammer from 'hammerjs';
-import { HammerGestureConfig, HAMMER_GESTURE_CONFIG } from '@angular/platform-browser';
-import { HammertimeDirective } from './hammer.directive';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AccountInterceptor } from './pages/account/interceptors/account.interceptor';
-import { TestComponent } from './pages/account/test/test.component';
+import { AuthGuardGuard } from './guard/auth-guard.guard';
 
 @NgModule({
   declarations: [
@@ -33,8 +29,6 @@ import { TestComponent } from './pages/account/test/test.component';
     AccountComponent,
     FooterComponent,
     ProductsComponent,
-    TestComponent,
-    HammertimeDirective
   ],
   imports: [
     BrowserModule,
@@ -55,7 +49,7 @@ import { TestComponent } from './pages/account/test/test.component';
       provide:HTTP_INTERCEPTORS,
       useClass:AccountInterceptor,
       multi:true
-    }
+    },AuthGuardGuard
   ],
   bootstrap: [AppComponent]
 })

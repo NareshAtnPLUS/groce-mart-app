@@ -113,9 +113,42 @@
             </div>
             <button [disabled]="!forgotForm.valid" class="submit-button" mat-raised-button color="accent-color" type="submit">Reset Password</button>
           </form>
+          <div *ngIf="this.showOtpForm">
+            <form [formGroup]="otpForm" (ngSubmit)="onOtpSubmit()" class="account-forms">
+              <h2>OTP</h2>
+              <div class="row">
+                <mat-form-field class="account-full-width">
+                  <mat-label>Enter your OTP</mat-label>
+                  <input formControlName="otp" matInput placeholder="01239" required>
+                </mat-form-field>
+              </div>
+              <button [disabled]="!otpForm.valid" class="submit-button" mat-raised-button color="accent-color" type="submit">Enter OTP</button>
+            </form>
+          </div>
+          <div *ngIf="this.showUpdatePasswordForm">
+            <form [formGroup]="updatePasswordForm" (ngSubmit)="onUpdatePasswordSubmit()" class="account-forms">
+              <h2>Update Password</h2>
+              <div class="row">
+                <mat-form-field class="account-full-width col-xl-6">
+                  <mat-label>Password</mat-label>
+                  <input formControlName="password" [errorStateMatcher]="matcher" matInput type="password" placeholder="Password here" required>
+                </mat-form-field>
+              </div>
+              <div class="row">
+                <mat-form-field class="account-full-width col-xl-6">
+                  <mat-label>Confirm Password</mat-label>
+                  <input formControlName="confirmPassword" [errorStateMatcher]="matcher" matInput type="password" placeholder="Password here" required>
+                  <mat-error *ngIf="registerForm.hasError('notSame')">
+                    Passwords do not match
+                </mat-error>
+                </mat-form-field>
+              </div>
+              <button [disabled]="!updatePasswordForm.valid" class="submit-button" mat-raised-button color="accent-color" type="submit">Update Passwords</button>
+            </form>
+          </div>
         </div>
       </ng-template>
   </mat-tab>
   </mat-tab-group>
 </div>
-<app-test></app-test>
+

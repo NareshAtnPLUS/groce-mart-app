@@ -127,6 +127,7 @@
   },
   "defaultProject": "groce-mart",
   "cli": {
-    "analytics": "4d197f7d-ed77-476f-a6d4-94562a231590"
+    "defaultCollection": "@ngrx/schematics",
+    "analytics": "e39b3f3e-a5ff-4b3a-99b5-1a3a01b92f78"
   }
 }
