@@ -27,6 +27,9 @@ const mongoose = require('mongoose'),
         password:{
             type:String,
             require:true
+        },
+        otp:{
+            type:String
         }
     })
 const User = module.exports = mongoose.model('User',UserSchema);
